@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public final class AjaxUtil {
 	/**
-	 * 请求否成功返回数据
+	 * 请求是否成功返回数据
 	 */
 	private boolean success;
 	/**
@@ -94,18 +94,19 @@ public final class AjaxUtil {
 	 * response返回JSON数据
 	 * 
 	 * @Title: send
-	 * @param
+	 * @param @param response
 	 * @return: void
 	 * @since V1.0
 	 */
 	public void send(HttpServletResponse response) {
 		// HttpServletResponse response = ServletActionContext.getResponse();
 		try {
-			response.setHeader("Cache-Control", "no-cache");   
-	        response.setContentType("text/json;charset=UTF-8");  
-	        response.setCharacterEncoding("UTF-8");  
+			response.setHeader("Cache-Control", "no-cache");
+			response.setContentType("text/json;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
 			response.flushBuffer();
-			response.getOutputStream().write(this.toJson().getBytes());;
+			response.getOutputStream().write(this.toJson().getBytes("UTF-8"));
+			;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -141,10 +142,10 @@ public final class AjaxUtil {
 
 	public static void main(String[] args) {
 		System.out.println(Success(new Integer(1)).toJson());
-		System.out.println(Success(new Integer(1), "删除成功").toJson());
+		System.out.println(Success(1, "删除成功").toJson());
 
 		System.out.println(Fail("数据库异常").toJson());
-		System.out.println(Fail("数据库异常", new RuntimeException("日期格式错误"))
-				.toJson());
+		System.out.println(Fail("数据库异常", new RuntimeException("日期格式错误")).toJson());
+		
 	}
 }

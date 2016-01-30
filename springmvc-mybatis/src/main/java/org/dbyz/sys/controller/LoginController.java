@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 
@@ -32,7 +31,7 @@ public class LoginController extends BaseController {
 		return "sys/login_index";
 	}
 
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
+	@RequestMapping(value = "/check", method = RequestMethod.POST)
 	public void check(HttpServletResponse resp,@RequestParam(required=false) SysUser user) {
 		AjaxUtil.Fail("用户名无效").send(resp);
 	}
