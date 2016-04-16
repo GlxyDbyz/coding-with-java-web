@@ -2,6 +2,8 @@ package org.dbyz.common.util;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.util.StringUtils;
+
 /**
  * 定义全局ajax返回标准(数据格式:JSON)
  *
@@ -106,7 +108,30 @@ public final class AjaxUtil {
 			response.setCharacterEncoding("UTF-8");
 			response.flushBuffer();
 			response.getOutputStream().write(this.toJson().getBytes("UTF-8"));
-			;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * response 返回 text
+	 * @Title: send
+	 * @param @param response
+	 * @param @param msg    
+	 * @return: void
+	 * @since V1.0
+	 */
+	public static void sendText(HttpServletResponse response,String msg) {
+		// HttpServletResponse response = ServletActionContext.getResponse();
+		if(response == null || StringUtils.isEmpty(msg)){
+			return;
+		}
+		try {
+			response.setHeader("Cache-Control", "no-cache");
+			response.setContentType("text/json;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.flushBuffer();
+			response.getOutputStream().write(msg.getBytes("UTF-8"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
