@@ -20,5 +20,7 @@
 	</dependencies>
 	<modules>
 		<module>springmvc-mybatis</module>
+		<module>dubbo-provider</module>
+		<module>dubbo-consumer</module>
 	</modules>
 </project>
