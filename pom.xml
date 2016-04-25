@@ -22,5 +22,7 @@
 		<module>springmvc-mybatis</module>
 		<module>dubbo-provider</module>
 		<module>dubbo-consumer</module>
+		<module>motan-provider</module>
+		<module>motan-consumer</module>
 	</modules>
 </project>
