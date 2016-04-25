@@ -1,6 +1,5 @@
-package org.dbyz.dubbo.test;
+package org.dbyz.dubbo.consumer;
 
-import org.dbyz.dubbo.consumer.Consumer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
